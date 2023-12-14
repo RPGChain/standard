@@ -1,0 +1,77 @@
+{
+    "rpgChainStandardVersion": "0.1",
+    "name": "A Fight against a giant spider",
+    "description": "Assist a villager and defeat a giant spider",
+    "image": "https://example.com/locations/cloverdale-outskirts.png",
+    "published_at": "2023-02-20 00:00:00",
+    "playable_until": "2050-01-01 00:00:00",
+    "rolls": [
+      {
+        "dc": "8",
+        "key": "ENEMY_ATTACK",
+        "label": "Rolling to attack the enemy",
+        "actionSuccess": "page:ENEMY_ATTACK_SUCCESS",
+        "actionFail": "page:ENEMY_ATTACK_FAIL"
+      }
+    ],
+    "pages": [
+      {
+        "key": "INDEX",
+        "markdown": "On your way to town, you couldn't help but feel excited about the prospect of meeting like-minded investors.\n\nYou have been researching this community for weeks and are eager to explore the possibilities.\n\nHowever, your journey is interrupted when you hear footsteps behind you.",
+        "image": "https://example.com/locations/cloverdale-outskirts.png",
+        "options": [
+          {
+            "action": "page:ENEMY",
+            "label": "Turn Around"
+          }
+        ]
+      },
+      {
+        "key": "ENEMY",
+        "markdown": "Hearing snarling from the corner of your peripherals, you bring your weapons to bear.\n\nA giant spider leaps towards you. Trouble has found you.\n\nOnly one person walks out from this.\n\nMake sure it’s you…..",
+        "image": "https://example.com/enemies/enemy.png",
+        "options": [
+          {
+            "action": "roll:ENEMY_ATTACK",
+            "label": "Attack!"
+          }
+        ]
+      },
+      {
+        "key": "ENEMY_ATTACK_SUCCESS",
+        "markdown": "You strike the enemy down, disposing of your enemy is quick and brutal fashion.\n\nNot too bad, you think to yourself. But if all adventures were this easy, then everyone would be an adventurer.\n\nYou take your small victory ahead and proceed.",
+        "image": "https://example.com/enemies/enemy.png",
+        "options": [
+          {
+            "action": "page:COMPLETE",
+            "label": "Continue towards town"
+          }
+        ],
+        "displayRolls": [
+          "ENEMY_ATTACK"
+        ],
+        "xp": 50
+      },
+      {
+        "key": "ENEMY_ATTACK_FAIL",
+        "markdown": "Your defenses have been overcome.\n\nYou take a hit and can retreat before you succumb to unconsciousness.",
+        "image": "https://example.com/enemies/enemy.png",
+        "options": [
+          {
+            "action": "page:COMPLETE",
+            "label": "Continue towards town"
+          }
+        ],
+        "displayRolls": [
+          "ENEMY_ATTACK"
+        ]
+      },
+      {
+        "key": "COMPLETE",
+        "markdown": "The entrance to town is just ahead.\n\nYou have finished this journey but you know there are plenty more to come.",
+        "image": "https://example.com/locations/cloverdale.png",
+        "options": [],
+        "completionStatus": "SUCCESS"
+      }
+    ]
+  }

@@ -1,0 +1,144 @@
+{
+    "rpgChainStandardVersion": "0.1",
+    "name": {
+      "type": "string",
+      "description": "Title of the quest."
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the quest."
+    },
+    "image": {
+      "type": "string",
+      "format": "url",
+      "optional": true,
+      "default": null,
+      "description": "URL to the quest's image file."
+    },
+    "playable_starts_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the quest is published and available to be played."
+    },
+    "playable_ends_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time until which the quest is no longer playable."
+    },
+    "private": {
+      "type": "boolean",
+      "optional": true,
+      "default": true,
+      "description": "Indicates whether the quest should be listed in the main index of quests."
+    },
+    "token_contracts": {
+      "type": "array",
+      "optional": true,
+      "default": [],
+      "items": {
+        "type": "string",
+        "format": "ethereum contract address"
+      },
+      "description": "List of Ethereum contract addresses allowed to interact with this quest. If none provided, any player can access."
+    },
+    "rolls": {
+      "type": "array",
+      "description": "Array of roll mechanics involved in the quest.",
+      "optional": true,
+      "default": [],
+      "items": {
+        "type": "object",
+        "properties": {
+          "dc": {
+            "type": "string",
+            "description": "Difficulty class or target number for the roll."
+          },
+          "key": {
+            "type": "string",
+            "description": "Unique identifier for the roll."
+          },
+          "label": {
+            "type": "string",
+            "description": "Visible label for the roll."
+          },
+          "actionSuccess": {
+            "type": "string",
+            "format": "page reference",
+            "description": "Reference to the action on successful roll."
+          },
+          "actionFail": {
+            "type": "string",
+            "format": "page reference",
+            "description": "Reference to the action on failed roll."
+          }
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Unique identifier for the page."
+          },
+          "markdown": {
+            "type": "string",
+            "description": "Markdown content of the page."
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "optional": true,
+            "default": null,
+            "description": "URL of the image associated with the page."
+          },
+          "options": {
+            "type": "array",
+            "optional": true,
+            "default": [],
+            "items": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "format": "action reference",
+                  "description": "Action to be taken."
+                },
+                "label": {
+                  "type": "string",
+                  "description": "Label for the action."
+                }
+              }
+            },
+            "description": "Options available on the page."
+          },
+          "displayRolls": {
+            "type": "array",
+            "optional": true,
+            "default": [],
+            "description": "Array of rolls to be displayed, if applicable.",
+            "items": {
+              "type": "string",
+              "description": "References to rolls that are displayed on the page."
+            }
+          },
+          "xp": {
+            "type": "integer",
+            "optional": true,
+            "default": 0,
+            "description": "Experience points awarded for the page."
+          },
+          "completionStatus": {
+            "type": "string",
+            "enum": ["SUCCESS", "FAILURE"],
+            "optional": true,
+            "description": "Status indicating the completion result of the quest."
+          }
+        }
+      },
+      "description": "Array of pages that constitute the quest."
+    }
+  }
+  
